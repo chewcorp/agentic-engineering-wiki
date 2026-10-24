@@ -19,7 +19,7 @@ jobs:
       - name: Install
         run: |
           pip install okf-core \
-            --index-url https://xchewtoyx.github.io/okf-core/simple/ \
+            --index-url https://chewcorp.github.io/okf-core/simple/ \
             --extra-index-url https://pypi.org/simple/
           pip install -r requirements-docs.txt
       - name: Validate bundle
