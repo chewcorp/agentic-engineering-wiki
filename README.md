@@ -45,7 +45,7 @@ a time. It works with or without the `okf` CLI.
 **With `okf`:**
 
 ```sh
-pip install okf-core --index-url https://xchewtoyx.github.io/okf-core/simple/ \
+pip install okf-core --index-url https://chewcorp.github.io/okf-core/simple/ \
   --extra-index-url https://pypi.org/simple/
 okf search --bundle agentic-engineering "tool inventory size"
 okf context --bundle agentic-engineering --seed harness/tool-inventory --budget-chars 12000
