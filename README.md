@@ -2,7 +2,7 @@
 
 A curated, sourced wiki of agentic engineering knowledge, covering how to build
 LLM agents and applications that work. It is packaged as a single
-[Open Knowledge Format (OKF)](https://github.com/xchewtoyx/okf-core) bundle.
+[Open Knowledge Format (OKF)](https://github.com/chewcorp/okf-core) bundle.
 The same Markdown files serve as retrievable context for agents and as a
 browsable docs site.
 

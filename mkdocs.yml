@@ -1,6 +1,6 @@
 site_name: Agentic Engineering Wiki
 site_description: Curated, sourced notes on building LLM agents and applications.
-repo_url: https://github.com/xchewtoyx/agentic-engineering-wiki
+repo_url: https://github.com/chewcorp/agentic-engineering-wiki
 docs_dir: wiki
 site_dir: site
 

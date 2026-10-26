@@ -51,6 +51,6 @@ finding on it, and don't substitute figures from memory.
 - Fix an accepted cause at every site in the bundle, not only where it was
   flagged, and list the sites in the reply.
 - Decline an out-of-scope finding in one line that names the rule above.
-- After three review rounds with findings on one pull request, stop pushing
+- After two review rounds with findings on one pull request, stop pushing
   and escalate the pattern to the owner. That is structural escalation, not
   convergence.
