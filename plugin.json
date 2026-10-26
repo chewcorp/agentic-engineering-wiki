@@ -7,8 +7,8 @@
     "name": "Russell Heilling",
     "url": "https://github.com/xchewtoyx"
   },
-  "homepage": "https://github.com/xchewtoyx/agentic-engineering-wiki",
-  "repository": "https://github.com/xchewtoyx/agentic-engineering-wiki",
+  "homepage": "https://github.com/chewcorp/agentic-engineering-wiki",
+  "repository": "https://github.com/chewcorp/agentic-engineering-wiki",
   "license": "CC0-1.0",
   "keywords": ["okf", "wiki", "llm", "agents", "prompt-engineering", "context-engineering"]
 }
