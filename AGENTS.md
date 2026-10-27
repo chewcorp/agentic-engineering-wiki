@@ -54,3 +54,17 @@ finding on it, and don't substitute figures from memory.
 - After two review rounds with findings on one pull request, stop pushing
   and escalate the pattern to the owner. That is structural escalation, not
   convergence.
+
+## Cursor Cloud specific instructions
+
+The docs site is already running at `http://127.0.0.1:8000` (`mkdocs serve` from this repo). Use that process. A second `mkdocs serve` fails because port 8000 is taken.
+
+`okf` and `mkdocs` are on `PATH`. Dependencies live in the gitignored `.venv`. From this repo:
+
+```bash
+okf validate --bundle agentic-engineering
+okf graph --bundle agentic-engineering --broken
+okf index --bundle agentic-engineering --recurse
+mkdocs build --strict
+okf search --bundle agentic-engineering "tool inventory size"
+```
