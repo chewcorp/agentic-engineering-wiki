@@ -28,8 +28,9 @@ The choice follows from what the specialist must do. A specialist that answers
 one kind of question is cheapest per invocation. One that works through a
 multi-turn case with a customer needs a thread, and a specialist that may pause
 for approval or survive a restart needs checkpoint support, which rules out the
-stateless mode. In LangGraph, checkpointing is valid for nested subgraphs and is
-an error on a root graph, so a persistent specialist is built as a subgraph.
+stateless mode. In LangGraph, the book notes that `checkpointer=True` is valid
+only for nested subgraphs, not root graphs, where it raises an error, so a
+persistent specialist is built as a subgraph when it relies on that setting.
 
 The same mode choice recurs across the wiki's delegation patterns. A
 [stateful task agent](../harness/stateful-task-agents.md) is bound to one work

@@ -31,7 +31,7 @@ retention, which keeps errors, violations and high-confidence events and drops
 trivial logs; and compression, which summarises episodes. Without a policy, memory
 becomes noisy, stale and contradictory, and expensive to inject back into the
 model. Because memory can also amplify an error, retention decisions and
-[validation before a durable write](../knowledge/validate-before-durable-memory-write.md)
+[validation before a durable write](validate-before-durable-memory-write.md)
 belong together.
 
 Strategies include [FIFO context eviction](fifo-context-eviction.md),
