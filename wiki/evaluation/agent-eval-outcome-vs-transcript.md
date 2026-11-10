@@ -10,6 +10,8 @@ sources:
     resource: "Demystifying evals for AI agents (Anthropic), Introduction; The structure of an evaluation"
   - title: "Holistic Agent Leaderboard (HAL)"
     resource: "Kapoor, Stroebl et al., arXiv 2510.11977, Oct 2025, ICLR 2026 — https://arxiv.org/html/2510.11977v1"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 8, Early Threat Testing: Hardening Agents During Development"
 ---
 
 An agent eval trial produces two distinct artifacts, and conflating them is a
@@ -69,3 +71,12 @@ systems, "the system came back" is not enough evidence that the action was
 sound or safe; its action trace needs reading too, and its success verdict
 should come from an [owner check](owner-validation-decides-success.md) rather
 than its own narration.
+
+A related failure is passive. In red-team testing an agent can say it cannot
+access a restricted policy while its trace shows a call to the search tool on
+that policy, with results returned. The book's remedy is to record blocked
+calls in the trace under a marker, so a judge can tell an agent that never tried
+a forbidden action from one that tried and was stopped. Its example, a
+customer-support agent with a confirmation-gated email tool, passed the attack
+classes it tested, which shows coverage of those cases rather than general
+safety. See the [agentic red-teaming loop](../security/agentic-red-teaming-loop.md).

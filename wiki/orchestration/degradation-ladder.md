@@ -14,6 +14,8 @@ sources:
     resource: "Neff, ch. 3, on precommitted demand-shedding"
   - title: "Reliable Machine Learning"
     resource: "Chen et al., ch. 9, on fallback to a safe default"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 7, The Need for a Fallback Guy; Strict JSON Mode Is Not the Cure"
 ---
 
 An agent system that is either fully up or fully down gives its operators, and
@@ -38,6 +40,16 @@ Learning* describes switching to a simpler, bounded, non-optimal behaviour when
 neither rollback nor roll-forward is available, and warns that the fallback
 path must be built and exercised before it is needed. The ladder's shape and
 the traffic-light classification remain analogical, so the evidence is weak.
+
+The same logic applies to a model fallback, which the book treats as part of the
+design from the start. Any model fails sometimes, through timeouts or through
+output that parses but is wrong, so the fallback has to be named in advance: in
+the book's words, if you don't define who the fallback is, "it's probably you at
+3:00 a.m." The fallback should be tested through the whole pipeline, not only its
+model call, because a fallback that struggles with the schema breaks the system
+even when its answers are reasonable. Its decisions can also differ from the
+primary model's, as [schema-valid decisions can diverge](../evaluation/schema-valid-decisions-can-diverge.md)
+describes.
 
 In practice each rung needs a concrete, pre-built configuration, and each
 workload (channels, scheduled jobs, individual agents) needs a droppability

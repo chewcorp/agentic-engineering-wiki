@@ -7,6 +7,8 @@ description: >
 sources:
   - title: "Tree of Thoughts: Deliberate Problem Solving with Large Language Models"
     resource: "Tree of Thoughts (Yao et al.), pp. 1–14"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 2, Tree of Thoughts as an Engineering Shortcut"
 ---
 
 Tree of Thoughts (ToT) generalizes [chain of thought](chain-of-thought-prompting.md)
@@ -57,3 +59,12 @@ extra autonomy is worth the bill via
 [deliberate search cost tradeoff](deliberate-search-cost-tradeoff.md) — readable
 high-level thoughts also improve interpretability versus opaque token-level
 values, but raise misuse risk as agents decide more autonomously.
+
+A lighter, staged form is also used in practice. A smaller model proposes a few
+candidate approaches, a stronger model evaluates and selects one, and an
+execution stage carries it out. The evaluator gets the stronger model because
+its routing choice is the high-impact one. The book suggests this can sometimes
+replace a full multi-agent team at lower cost and time, without giving a
+comparison figure. Because the stages are fixed in code, it differs from
+[supervisor routing](../orchestration/supervisor-routing.md), where a model picks
+the next agent at each step.

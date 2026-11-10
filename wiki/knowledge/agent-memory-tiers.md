@@ -11,6 +11,8 @@ sources:
     resource: "MemGPT (Packer et al.), §2"
   - title: "Generative Agents: Interactive Simulacra of Human Behavior"
     resource: "Generative Agents (Park et al.), pp. 1–22"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 10, Agent Memory Types (Tables 10-1 and 10-3)"
 ---
 
 Memory mechanisms let a model retain and use information beyond a single bare
@@ -48,3 +50,16 @@ nothing in them is recalled by default: a
 keeps the full record for recovery and audit, and
 [externalised progress artefacts](externalised-progress-artifacts.md) carry the
 state of one long task across sessions.
+
+Long-term stores also differ by what they hold. The book names three kinds.
+Episodic memory records specific past interactions and their outcomes, for recall
+and post-mortem analysis. Semantic memory holds facts such as preferences, units
+and product settings, so that only the facts relevant to a turn are loaded.
+Procedural memory holds how the agent should behave, such as formatting rules and
+workflows, and a user can change it in conversation so the change is applied from
+then on. The failure modes differ by kind: episodic memory can overfit to past
+events that do not apply, procedural memory can lock in poor behaviour if it is not
+validated, and semantic memory can hold stale or wrong facts. Scoping each kind to
+the right user is covered in [memory namespace scoping](memory-namespace-scoping.md),
+and a reflection-based version of episodic memory is in
+[episodic reflection memory](episodic-reflection-memory.md).

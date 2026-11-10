@@ -7,6 +7,8 @@ description: >
 sources:
   - title: "Generative Agents: Interactive Simulacra of Human Behavior"
     resource: "Generative Agents (Park et al.), pp. 1–22"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 10, Memory Poisoning Threat Model (citing Dash et al., 2026 preprint)"
 ---
 
 Long-lived agents that store comprehensive experience in a
@@ -25,3 +27,12 @@ limit parasocial misuse. Treat embellished or world-knowledge-bleed memories
 as expected failure modes in
 [offline prompt evaluation](../evaluation/offline-prompt-evaluation.md) interviews, not as
 rare bugs.
+
+Poisoning is the same risk with the attack moved into stored state. A 2026
+preprint reports that untrusted content written to agent memory later returns as
+trusted context, that agents which write and retrieve memory aggressively are
+easier to exploit, and that prompt-injection defences do not cover this path
+because nothing is injected into the prompt. The control point is the write:
+see [validate before durable memory write](../knowledge/validate-before-durable-memory-write.md),
+and [memory namespace scoping](../knowledge/memory-namespace-scoping.md) for which
+records a given user's write can reach.

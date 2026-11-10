@@ -33,6 +33,8 @@ sources:
     resource: "Claude Code docs — https://code.claude.com/docs/en/headless"
   - title: "Non-interactive mode"
     resource: "OpenAI Codex docs — https://learn.chatgpt.com/docs/non-interactive-mode"
+  - title: "Observability in the AI-Native Era"
+    resource: "Lipsig, Grabner and Rati, ch. 6, Tip: Don't Mix Read and Write"
 ---
 
 An agent with write access to a live system can make an incident worse faster
@@ -105,6 +107,14 @@ and both sit inside the
 Splitting tiers is also how such an agent drops a leg of
 [the agents Rule of Two](../security/agents-rule-of-two.md): the tier that reads
 [untrusted logs](../security/logs-are-untrusted-input.md) holds no write power.
+
+The same split can be made at the level of tool servers. One observability guide
+separates data-access tools, such as log and trace queries, from configuration and
+triggering tools, and installs them as separate MCP servers, so a data-only server
+cannot change settings or start automation. Its reasons are accidental changes and
+a smaller surface for prompt injection. It also observes that users tend to enable
+every tool by default, which defeats the split unless the default changes. Which
+tools exist at all is the subject of [question-driven tool design](question-driven-tool-design.md).
 
 When a write is warranted, it should be reached through review or a narrow,
 deterministic action inside the
