@@ -11,6 +11,8 @@ sources:
     resource: "Meta Model API cookbook, Building with Muse Code, undated (retrieved 3 Oct 2026) — https://dev.meta.ai/docs/cookbook/deterministic-replay"
   - title: "Audit and resume agent sessions"
     resource: "Meta Model API cookbook, Building with Muse Code, undated (retrieved 3 Oct 2026), byte-deterministic export — https://dev.meta.ai/docs/cookbook/audit-agent-sessions"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 9, Trace-to-Benchmark Pipeline; Regression Workflow"
 ---
 
 Most harness changes never touch the model. They change how history is
@@ -56,3 +58,14 @@ contents redacted, let a change to prompts, compaction or tool wiring be
 checked against real work before it ships. That matters most because
 [harness assumptions go stale](../harness-assumptions-go-stale.md) and get
 revised often.
+
+The book uses a related replay for model choice, which needs a model call. Critical
+production failures are promoted into replayable cases, stored as JSON lines with a
+reference answer, prior scores and evaluator notes. A candidate model runs each case
+at temperature zero with a structured output, the same evaluation logic scores it,
+and the mean scores are compared before any production change. In the book's
+comparison a smaller model scored higher on step completion and step efficiency,
+while the larger model scored higher on answer correctness, which is a reason to
+compare whole configurations rather than a single score. The pattern also covers
+fallback models, prompt changes and routing changes. Unlike the CI replay above,
+this version calls a model, so it is slower and its results are not deterministic.

@@ -11,6 +11,8 @@ sources:
     resource: "Prompt Engineering for LLMs (Berryman), ch. 8"
   - title: "MemGPT: Towards LLMs as Operating Systems"
     resource: "MemGPT (Packer et al.), §2"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 10, Memory Hygiene: Retention Policy Mechanisms (Table 10-4)"
 ---
 
 A memory system has two jobs: **management** (what lives in short-term versus
@@ -22,6 +24,15 @@ Long-term deletion is often optional because external storage is cheap.
 Short-term memory is bound by context limits and needs an explicit strategy.
 Reserve a slice of the window for retrieved long-term content (for example 30%);
 the rest is short-term budget — when it fills, overflow moves out.
+
+Retention is a separate policy for what the long-term store keeps. The book lists
+three mechanisms: time-based pruning, which keeps the last N days; importance-based
+retention, which keeps errors, violations and high-confidence events and drops
+trivial logs; and compression, which summarises episodes. Without a policy, memory
+becomes noisy, stale and contradictory, and expensive to inject back into the
+model. Because memory can also amplify an error, retention decisions and
+[validation before a durable write](validate-before-durable-memory-write.md)
+belong together.
 
 Strategies include [FIFO context eviction](fifo-context-eviction.md),
 [memory pressure eviction](memory-pressure-eviction.md),

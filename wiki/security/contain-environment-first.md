@@ -17,6 +17,8 @@ sources:
     resource: "Simon Willison, 30 Sep 2025 — https://simonwillison.net/2025/Sep/30/designing-agentic-loops/"
   - title: "Contained execution"
     resource: "Meta Model API cookbook, Building with Muse Code, undated (retrieved 3 Oct 2026) — https://dev.meta.ai/docs/cookbook/contained-execution"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 6, Sandboxing Agent Execution (three cumulative layers)"
 ---
 
 An agent that can run code can do almost anything the account it runs as can
@@ -55,6 +57,17 @@ budget-capped credentials. Against Zechner, Willison and Meta's
 [Rule of Two](agents-rule-of-two.md) hold that containment alone is not enough
 and capability combinations must also be limited. The point remains contested,
 though both positions agree that the environment boundary comes first.
+
+The book's account of code execution gives three layers that stack. Runtime
+isolation limits where code runs, using containers or virtual machines at the
+operating-system or hardware boundary. Ephemeral environments limit how long state
+lives, since each is created for one task or run and destroyed afterwards, which
+stops state leaking between runs. Governed execution services limit who may run
+what and when, by putting execution behind an interface where policy, budgets,
+timeouts and approvals are enforced outside the agent. Each layer reduces the blast
+radius of the one above it. The book also says a container is a packaging mechanism
+and not a hard security boundary, which is why the layers are stacked. The
+interpreter-level option is in [capability-scoped interpreter](capability-scoped-interpreter.md).
 
 For any agent, then, its container, mounts and network reach are the primary
 safety control, ahead of anything in its prompt. The worst mount, a container

@@ -8,6 +8,8 @@ description: >
 sources:
   - title: "Demystifying evals for AI agents"
     resource: "Demystifying evals for AI agents (Anthropic), How to evaluate AI agents"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 9, Judge-Model Discipline; Deterministic vs. LLM-Based Checks (Table 9-4)"
 ---
 
 Any single check inside an agent eval — one grader over one portion of a
@@ -56,3 +58,12 @@ grader type per check, rather than defaulting to whichever is easiest to
 stand up, is as much a part of
 [per-task offline harness tests](per-task-offline-harness-tests.md) design as
 picking the example set to test against.
+
+Two habits from a production-trace chapter apply here. The first is to put
+deterministic checks first and keep generative judges for open-ended outputs, since
+a judge is slower and costlier and can be biased in ways that are hard to see. The
+book's deterministic checks include retry budgets, handoff targets and required
+steps, and each can be read from a trace field directly. The second is that, for
+text quality, relative or group-based ranking is more robust than scoring each
+output alone. The book's example is RULER-style ranking. Where a judge's reason is
+kept, it becomes the audit trail for borderline cases.

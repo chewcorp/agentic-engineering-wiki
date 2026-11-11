@@ -9,6 +9,8 @@ sources:
     resource: "AI Engineering (Chip Huyen), ch. 6"
   - title: Prompt Engineering for LLMs
     resource: "Prompt Engineering for LLMs (Berryman), ch. 8"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 2, Surprised You're Joking, AI Agent: Designing Human-in-the-Loop Workflows"
 ---
 
 Humans need not be fully absent from an [LLM agent](../llm-agent.md). They can
@@ -47,6 +49,17 @@ runbook, with anything outside that envelope escalated as a planned step
 ([autonomy bounded by the prepared envelope](envelope-bounded-autonomy.md)).
 Below the gates, some actions should be unavailable whatever is approved
 ([hardline command floor](../security/hardline-command-floor.md)).
+
+In a LangGraph-style workflow an interruption takes one of four forms. The
+approver can approve or reject before a critical step, with rejection routed to
+another action. They can review and edit the state directly. They can inspect a
+tool call's arguments before it reaches an external system. Or they can supply an
+input the workflow needs to collect. Two cautions come with these. API calls and
+database writes must not share a node with the interrupt, so that resuming does
+not repeat them, which is the sequencing in [the effect sandwich](../orchestration/effect-sandwich.md).
+And a revise path that loops back to the gate keeps the workflow predictable.
+An approver shown only the agent's rationale can be persuaded, as
+[agent persuades the approver](../security/agent-persuades-approver.md) describes.
 
 Human involvement need not be limited to pre-execution approval. Queue human
 reviewers for [workflow tasks](../orchestration/task-io-schema-design.md) whose output needs

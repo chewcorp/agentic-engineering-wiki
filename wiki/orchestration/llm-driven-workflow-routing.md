@@ -7,6 +7,8 @@ description: >
 sources:
   - title: Prompt Engineering for LLMs
     resource: "Prompt Engineering for LLMs (Berryman), ch. 9"
+  - title: "AI Agents"
+    resource: "AI Agents (Koenigstein), ch. 1, Deus Ex Machina: Orchestrated Autonomy (Table 1-2)"
 ---
 
 Basic workflows may use LLMs inside tasks while routing between tasks stays a
@@ -36,3 +38,13 @@ Each step up this ladder is a form of [agent control flow](agent-control-flow.md
 where the model itself, rather than the harness, decides branching — the same
 tradeoff of flexibility against debuggability and evaluability that applies to
 any [multi-agent architecture](multi-agent-architecture.md).
+
+The book draws a useful boundary on this autonomy. Agents can route among
+predefined paths, select tools or subagents, decide whether another step is needed,
+revise their own prompts and toolsets within limits, and write small code to choose
+the next step. They cannot redesign their own control graph, generate and validate
+new topologies, create tools for themselves, or guarantee alignment when they change
+strategy mid-run. Most production systems therefore sit between a fixed router and a
+fully autonomous agent, with the choice made inside predefined states and
+transitions. The finite-state view of that structure is in
+[finite state machine control](finite-state-machine-control.md).
